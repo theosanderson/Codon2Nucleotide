@@ -52,7 +52,7 @@ function App() {
   return (
     <div className="App">
       <h1>Codon2Nucleotide</h1>
-      <p>Convert from codon position to genomic coordinates, or vice versa. Currently for SARS-CoV-2. <a href="https://github.com/theosanderson/codon2nucleotide">Github</a></p>
+      <p>Convert from codon position to genomic coordinates, or vice versa. Currently for SARS-CoV-2. <a href="https://github.com/theosanderson/codon2nucleotide">GitHub</a></p>
       <div className="flex-container">
 
         <div className="flex-child magenta">
