@@ -59,7 +59,7 @@ function App() {
 
           <h3>Codon </h3>
           <div style={{ marginBottom: "5px" }}> Gene: <select value={gene} onChange={e => { setGene(e.target.value) }}>
-            {Object.keys(genes).map(x =>
+            {Object.keys(genes).sort().map(x =>
               <option key={x} value={x}>{x}</option>
 
 
