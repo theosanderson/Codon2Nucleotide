@@ -36,12 +36,15 @@ function App() {
 
   if (codon == null) {
     const matches = Object.keys(genes).filter(x => genes[x][0] <= nucleotide & genes[x][1] >= nucleotide)
-    if (matches.length == 1) {
+    if (matches.length === 1) {
       console.log(matches)
 
       gene = matches[0]
       const the_start = genes[gene][0]
       codon = Math.floor((nucleotide - the_start) / 3) + 1
+    }
+    else {
+      codon = "!!"
     }
   }
 
