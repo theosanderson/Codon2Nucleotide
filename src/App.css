@@ -60,3 +60,4 @@ input{padding:3px;}
 select{padding:3px;}
 
 h1{font-size:30px;}
+.to_sec{min-width:5em; display: inline-block;}

@@ -58,7 +58,7 @@ function App() {
         <div className="flex-child magenta">
 
           <h3>Codon </h3>
-          <div style={{ marginBottom: "5px" }}> Gene: <select value={gene} onChange={e => { setGene(e.target.value) }}>
+          <div style={{ marginBottom: "5px" }}> Gene: <select value={gene} onChange={e => { setGene(e.target.value); setCodon(codon); setNucleotide(null) }}>
             {Object.keys(genes).sort().map(x =>
               <option key={x} value={x}>{x}</option>
 
@@ -76,7 +76,7 @@ function App() {
         <div className="flex-child green">
           <h3>Nucleotide </h3>
           Nucleotide: <input type="number" value={nucleotide} onChange={e => { setNucleotide(parseInt(e.target.value)); setCodon(null); }}></input>
-          {end_nucleotide && " to " + end_nucleotide}
+          <div className="to_sec">{end_nucleotide && " to " + end_nucleotide}</div>
         </div>
 
       </div>
