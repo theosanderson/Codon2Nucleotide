@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.flex-container {
+  display: flex;
+  max-width: 800px;
+  margin:0 auto
+}
+
+.flex-child {
+  flex: 1;
+  border: 2px solid #eee;
+  padding:10px;
+  padding-bottom:30px;
+}  
+
+.flex-child:first-child {
+  margin-right: 20px;
+}
+
+*{font-size:18px}
+h3{font-size:24px;}
+input{padding:3px;}
+select{padding:3px;}
+
+h1{font-size:30px;}
