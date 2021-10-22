@@ -40,24 +40,52 @@
 .flex-container {
   display: flex;
   max-width: 800px;
-  margin:0 auto
+  margin: 0 auto;
 }
 
 .flex-child {
   flex: 1;
   border: 2px solid #eee;
-  padding:10px;
-  padding-bottom:30px;
-}  
+  padding: 10px;
+  padding-bottom: 50px;
+  margin-top: 20px;
+  padding-top: 0px;
+}
 
 .flex-child:first-child {
   margin-right: 20px;
 }
 
-*{font-size:18px}
-h3{font-size:24px;}
-input{padding:3px;}
-select{padding:3px;}
+* {
+  font-size: 18px;
+}
+h3 {
+  font-size: 24px;
+}
+input {
+  padding: 3px;
+}
+select {
+  padding: 3px;
+}
 
-h1{font-size:30px;}
-.to_sec{min-width:5em; display: inline-block;}
+h1 {
+  font-size: 30px;
+}
+.to_sec {
+  min-width: 5em;
+  display: inline-block;
+}
+
+button {
+  font-size: 40%;
+  margin-top: 50px;
+  /* remove all style and format as link*/
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: inherit;
+  color: rgb(167, 167, 167);
+  text-decoration: underline;
+}
