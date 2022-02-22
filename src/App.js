@@ -134,8 +134,10 @@ function App() {
       if (orf1aorb !== gene){
       setOrf1aOrb(gene)
       setCombinedCodon(null)
+      console.log("b")
     }
       if(orf1aorbcodon !== codon){
+        console.log("c")
       setORF1aorBCodon(codon)
       setCombinedCodon(null)
       }
@@ -144,10 +146,12 @@ function App() {
   }
   else{
     if(gene!==orf1aorb){
+      console.log("d")
       setGene(orf1aorb)
       setNucleotide(null)
     }
     if (codon !== orf1aorbcodon){
+      console.log("e")
       setCodon(orf1aorbcodon)
       setNucleotide(null)
     }
