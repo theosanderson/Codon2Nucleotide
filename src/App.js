@@ -136,8 +136,8 @@ function App() {
       setCombinedCodon(null)
       console.log("b")
     }
-      if(orf1aorbcodon !== codon && orf1aorbcodon!==""){
-        console.log("c")
+      if(orf1aorbcodon !== codon){
+        console.log("c",codon,orf1aorbcodon)
 
       setORF1aorBCodon(codon)
       setCombinedCodon(null)
