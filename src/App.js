@@ -1,8 +1,4 @@
-
 import React, { useState } from 'react';
-
-
-
 
 import './App.css';
 
@@ -21,24 +17,56 @@ const genes = {
   'ORF10': [29558, 29675]
 }
 
+// const nsps = { // from uniprot P0DTD1 orf1ab numbering of nsps
+//   'nsp1': [1, 180],
+//   'nsp2': [181, 818],
+//   'nsp3': [819, 2763],
+//   'nsp4': [2764, 3263],
+//   'nsp5 (Mpro)': [3264, 3569],
+//   'nsp6': [3570, 3859],
+//   'nsp7': [3860, 3942],
+//   'nsp8': [3942, 4140],
+//   'nsp9': [4141, 4253],
+//   'nsp10': [4254, 4392],
+//   'nsp12 (RdRp)': [4393, 5324],
+//   'nsp13': [5325, 5925],
+//   'nsp14': [5926, 6452],
+//   'nsp15': [6453, 6798],
+//   'nsp16': [6799, 7096]
+// }
+
+const nsps = { // from uniprot P0DTD1 orf1ab numbering of nsps
+  'nsp1': 1,
+  'nsp2': 181,
+  'nsp3': 819,
+  'nsp4': 2764,
+  'nsp5 (Mpro)': 3264,
+  'nsp6': 3570,
+  'nsp7': 3860,
+  'nsp8': 3942,
+  'nsp9': 4141,
+  'nsp10': 4254,
+  'nsp12 (RdRp)': 4393,
+  'nsp13': 5325,
+  'nsp14': 5926,
+  'nsp15': 6453,
+  'nsp16': 6799
+}
 
 function App() {
-  let [codon, setCodon] = useState(484);
 
+  let [codon, setCodon] = useState(484);
   let [nucleotide, setNucleotide] = useState(null);
   let [gene, setGene] = useState("S")
+  let [nsp, setNsp] = useState("nsp6")
   let [themode,setthemode] = useState("nucleotide")
   let end_nucleotide = ""
-
-
-
 
   if (nucleotide == null) {
     const start_nucleotide = genes[gene][0] + (codon - 1) * 3
     end_nucleotide = start_nucleotide + 2
     nucleotide = start_nucleotide
   }
-
 
   if (codon == null) {
     const matches = Object.keys(genes).filter(x => genes[x][0] <= nucleotide & genes[x][1] >= nucleotide)
@@ -56,9 +84,24 @@ function App() {
 
   let [orf1aorb, setOrf1aOrb] = useState(null);
   let [orf1aorbcodon, setORF1aorBCodon] = useState(null);
-  let [combinedCodon,setCombinedCodon] = useState(5005);
+  let [nspCodon, setNspCodon] = useState(null);
+  let [combinedCodon,setCombinedCodon] = useState(3646);
 
   if (combinedCodon == null) {
+    if (orf1aorbcodon == null) {
+
+      combinedCodon = nsps[nsp] + nspCodon - 1;
+      
+      if(combinedCodon >= nsps["nsp13"]) {
+        orf1aorbcodon = nsps[nsp]+nspCodon-1-4401;
+        orf1aorb = "ORF1b";
+      }
+      else {
+        orf1aorbcodon = nsps[nsp]+nspCodon-1;
+        orf1aorb = "ORF1a";
+      }
+
+    }
     combinedCodon = orf1aorbcodon + (orf1aorb === "ORF1b" ? 4401 : 0)
   }
   else{
@@ -70,6 +113,19 @@ function App() {
       orf1aorb = "ORF1a"
       orf1aorbcodon = combinedCodon
       
+    }
+  }
+
+  if (nspCodon == null) {
+
+    nsp="nsp1"
+    nspCodon=combinedCodon - nsps[nsp] + 1
+
+    for (const [key, value] of Object.entries(nsps)) {
+      if (combinedCodon > value && combinedCodon - value < combinedCodon - nsps[nsp]) {
+        nsp = key;
+        nspCodon = combinedCodon - value + 1;
+      }
     }
   }
 
@@ -100,10 +156,12 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Codon2Nucleotide</h1>
-      <p>Convert from codon position to genomic coordinates, or vice versa. Currently for SARS-CoV-2. <a href="https://github.com/theosanderson/codon2nucleotide">GitHub</a></p>
+      <h1>nt2nsp</h1>
+      <p>Convert from codon position to genomic coordinates or vice versa.</p>
+      <p>Convert between ORF1a/b, ORF1ab, and polyprotein nsps.</p>
+      <p>Currently for SARS-CoV-2.</p>
       {themode==="nucleotide"&&
-      <div className="flex-container">
+        <div className="flex-container">
 
         <div className="flex-child magenta">
 
@@ -111,15 +169,10 @@ function App() {
           <div style={{ marginBottom: "5px" }}> Gene: <select value={gene} onChange={e => { setGene(e.target.value); setCodon(codon); setNucleotide(null) }}>
             {Object.keys(genes).sort().map(x =>
               <option key={x} value={x}>{x}</option>
-
-
-
             )}
           </select></div>
 
           Codon: <input type="number" value={codon} onChange={e => { setCodon(parseInt(e.target.value)); setNucleotide(null) }}></input>
-
-
 
         </div>
 
@@ -128,46 +181,56 @@ function App() {
           Nucleotide: <input type="number" value={nucleotide} onChange={e => { setNucleotide(parseInt(e.target.value)); setCodon(null); }}></input>
           <div className="to_sec">{end_nucleotide && " to " + end_nucleotide}</div>
         </div>
-        
 
       </div>
-}
+    }
 
-      {themode==="orf1ab"&&
+    {themode==="orf1ab"&&
       <div className="flex-container">
 
+      <div className="flex-child magenta">
 
-<div className="flex-child magenta">
+        <h3>ORF1a or B </h3>
+        <div style={{ marginBottom: "5px" }}> Gene: <select value={orf1aorb} onChange={e => { setOrf1aOrb(e.target.value); setORF1aorBCodon(orf1aorbcodon); setCombinedCodon(null); setNspCodon(null)}}>
+          {['ORF1a','ORF1b'].sort().map(x =>
+            <option key={x} value={x}>{x}</option>
+          )}
+        </select></div>
 
-  <h3>ORF1a or B </h3>
-  <div style={{ marginBottom: "5px" }}> Gene: <select value={orf1aorb} onChange={e => { setOrf1aOrb(e.target.value); setORF1aorBCodon(codon); setCombinedCodon(null) ;  }}>
-    {['ORF1a','ORF1b'].sort().map(x =>
-      <option key={x} value={x}>{x}</option>
+        Codon: <input type="number" value={orf1aorbcodon} onChange={e => { if (e.target.value !== "") setORF1aorBCodon(parseInt(e.target.value)); setOrf1aOrb(orf1aorb); setCombinedCodon(null); setNspCodon(null)}}></input>
 
+      </div>
 
+      <div className="flex-child green">
 
-    )}
-  </select></div>
+        <h3>ORF1ab </h3>
 
-  Codon: <input type="number" value={orf1aorbcodon} onChange={e => { setORF1aorBCodon(parseInt(e.target.value)); setOrf1aOrb(orf1aorb) ;setCombinedCodon(null) ;}}></input>
+        Codon: <input type="number" value={combinedCodon} onChange={e => { if (e.target.value !== "") setCombinedCodon(parseInt(e.target.value)); setORF1aorBCodon(null); setNspCodon(null)}}></input>
 
+      </div>
 
+      <div className="flex-child plaid">
+        
+        <h3>nsp </h3>
 
-</div>
+        <div style={{ marginBottom: "5px" }}> Gene: <select value={nsp} onChange={e => { setNsp(e.target.value); setNspCodon(nspCodon); setCombinedCodon(null); setORF1aorBCodon(null)}}>
+          {Object.keys(nsps).map(x =>
+            <option key={x} value={x}>{x}</option>
+          )}
+        </select></div>
 
-<div className="flex-child green">
-  <h3>ORF1ab </h3>
-  Codon: <input type="number" value={combinedCodon} onChange={e => { setCombinedCodon(parseInt(e.target.value)); setORF1aorBCodon(null);  }}></input>
+        Codon: <input type="number" value={nspCodon} onChange={e => { if (e.target.value !== "") setNspCodon(parseInt(e.target.value)); setNsp(nsp); setCombinedCodon(null); setORF1aorBCodon(null)}}></input>
 
-</div>
+      </div>
 
-
-</div>
+    </div>
 }
 
 <p><button onClick={()=> {
   setthemode(themode==="nucleotide"?"orf1ab":"nucleotide")
-}}>{themode==="orf1ab"?  <span>Switch to codon / nucleotide mode</span>: <span>Switch to ORF1a/b:ORF1ab conversion</span>}</button></p>
+}}><span>Mode (click to change): {themode==="nucleotide"?  "Codon / nucleotide": "ORF1a/b:ORF1ab:nsp"} conversion</span></button></p>
+
+<p><a href="https://github.com/theosanderson/codon2nucleotide">GitHub (original Codon2Nucleotide from Theo Sanderson)</a></p>
 
     </div >
   );

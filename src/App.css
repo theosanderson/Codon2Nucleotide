@@ -56,6 +56,10 @@
   margin-right: 20px;
 }
 
+.flex-child:nth-child(2) {
+  margin-right: 20px;
+}
+
 * {
   font-size: 18px;
 }
@@ -64,6 +68,7 @@ h3 {
 }
 input {
   padding: 3px;
+  width: 150px;
 }
 select {
   padding: 3px;
