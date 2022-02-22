@@ -2,6 +2,7 @@
   text-align: center;
 }
 
+.bolded{font-weight: bold;}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

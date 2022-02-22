@@ -156,10 +156,28 @@ function App() {
 
   return (
     <div className="App">
-      <h1>nt2nsp</h1>
-      <p>Convert from codon position to genomic coordinates or vice versa.</p>
-      <p>Convert between ORF1a/b, ORF1ab, and polyprotein nsps.</p>
-      <p>Currently for SARS-CoV-2.</p>
+      <h1>Codon2Nucelotide</h1>
+      {themode==="nucleotide"&&
+      <>
+      <p class="bolded">Convert from SARS-CoV-2 codon position to genomic coordinates or vice versa.</p>
+      <p><button onClick={()=> {
+  setthemode("orf1ab")
+}}>Convert between ORF1a/b, ORF1ab, and polyprotein nsps.</button></p></>
+}
+
+{themode==="orf1ab"&&
+      <>
+    
+      <p><button onClick={()=> {
+  setthemode("nucleotide")
+}}>Convert from SARS-CoV-2 codon position to genomic coordinates or vice versa.</button></p>
+  <p class="bolded">Convert between ORF1a/b, ORF1ab, and polyprotein nsps.</p>
+  </>
+}
+      
+     
+      
+    
       {themode==="nucleotide"&&
         <div className="flex-container">
 
@@ -226,11 +244,8 @@ function App() {
     </div>
 }
 
-<p><button onClick={()=> {
-  setthemode(themode==="nucleotide"?"orf1ab":"nucleotide")
-}}><span>Mode (click to change): {themode==="nucleotide"?  "Codon / nucleotide": "ORF1a/b:ORF1ab:nsp"} conversion</span></button></p>
 
-<p><a href="https://github.com/theosanderson/codon2nucleotide">GitHub (original Codon2Nucleotide from Theo Sanderson)</a></p>
+<p><a href="https://github.com/theosanderson/codon2nucleotide">GitHub</a></p>
 
     </div >
   );
