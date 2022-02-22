@@ -2,6 +2,7 @@
   text-align: center;
 }
 
+.bolded{font-weight: bold;}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -56,6 +57,10 @@
   margin-right: 20px;
 }
 
+.flex-child:nth-child(2) {
+  margin-right: 20px;
+}
+
 * {
   font-size: 18px;
 }
@@ -64,6 +69,7 @@ h3 {
 }
 input {
   padding: 3px;
+  width: 150px;
 }
 select {
   padding: 3px;
@@ -79,7 +85,6 @@ h1 {
 
 button {
   font-size: 40%;
-  margin-top: 50px;
   /* remove all style and format as link*/
   border: none;
   background: none;
@@ -88,4 +93,8 @@ button {
   font-size: inherit;
   color: rgb(167, 167, 167);
   text-decoration: underline;
+}
+
+.margined{
+  margin-top:50px;
 }
