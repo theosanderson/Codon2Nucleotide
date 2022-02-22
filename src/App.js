@@ -164,10 +164,10 @@ function App() {
       <h1>Codon2Nucelotide</h1>
       {themode==="nucleotide"&&
       <>
-      <p class="bolded margined">Convert from SARS-CoV-2 codon position to genomic coordinates or vice versa.</p>
+      <p class="bolded margined">Convert from SARS-CoV-2 codon position to genomic coordinates or vice versa</p>
       <p><button onClick={()=> {
   setthemode("orf1ab")
-}}>Convert between ORF1a/b, ORF1ab, and polyprotein nsps.</button></p></>
+}}>Convert between ORF1a/b, ORF1ab, and polyprotein nsps</button></p></>
 }
 
 {themode==="orf1ab"&&
@@ -175,8 +175,8 @@ function App() {
     
       <p class=" margined"><button onClick={()=> {
   setthemode("nucleotide")
-}}>Convert from SARS-CoV-2 codon position to genomic coordinates or vice versa.</button></p>
-  <p class="bolded">Convert between ORF1a/b, ORF1ab, and polyprotein nsps.</p>
+}}>Convert from SARS-CoV-2 codon position to genomic coordinates or vice versa</button></p>
+  <p class="bolded">Convert between ORF1a/b, ORF1ab, and polyprotein nsps</p>
   </>
 }
       
