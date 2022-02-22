@@ -136,7 +136,7 @@ function App() {
       setCombinedCodon(null)
       console.log("b")
     }
-      if(orf1aorbcodon !== codon){
+      if(orf1aorbcodon !== codon | (isNaN(codon)&& isNaN(orf1aorb))) {
         console.log("c",codon,orf1aorbcodon)
 
       setORF1aorBCodon(codon)
