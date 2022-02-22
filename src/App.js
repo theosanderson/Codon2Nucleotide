@@ -151,7 +151,7 @@ function App() {
       setGene(orf1aorb)
       setNucleotide(null)
     }
-    if (codon !== orf1aorbcodon && !(isNaN(codon)&& isNaN(orf1aorb))){
+    if (codon !== orf1aorbcodon && !(isNaN(codon)&& isNaN(orf1aorbcodon))){
       console.log("e")
       setCodon(orf1aorbcodon)
       setNucleotide(null)
