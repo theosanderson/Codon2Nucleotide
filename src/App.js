@@ -136,7 +136,7 @@ function App() {
       setCombinedCodon(null)
       console.log("b")
     }
-      if(orf1aorbcodon !== codon && !(isNaN(codon)&& isNaN(orf1aorb))) {
+    if(orf1aorbcodon !== codon && !(isNaN(codon)&& isNaN(orf1aorb))) {
         console.log("c",codon,orf1aorbcodon)
 
       setORF1aorBCodon(codon)
@@ -220,7 +220,7 @@ function App() {
           )}
         </select></div>
 
-        Codon: <input type="number" value={orf1aorbcodon} onChange={e => { if (e.target.value !== "") setORF1aorBCodon(parseInt(e.target.value)); setOrf1aOrb(orf1aorb); setCombinedCodon(null); setNspCodon(null)}}></input>
+        Codon: <input type="number" value={orf1aorbcodon} onChange={e => {  setORF1aorBCodon(parseInt(e.target.value)); setOrf1aOrb(orf1aorb); setCombinedCodon(null); setNspCodon(null)}}></input>
 
       </div>
 
@@ -228,7 +228,7 @@ function App() {
 
         <h3>ORF1ab </h3>
 
-        Codon: <input type="number" value={combinedCodon} onChange={e => { if (e.target.value !== "") setCombinedCodon(parseInt(e.target.value)); setORF1aorBCodon(null); setNspCodon(null)}}></input>
+        Codon: <input type="number" value={combinedCodon} onChange={e => { setCombinedCodon(parseInt(e.target.value)); setORF1aorBCodon(null); setNspCodon(null)}}></input>
 
       </div>
 
@@ -242,7 +242,7 @@ function App() {
           )}
         </select></div>
 
-        Codon: <input type="number" value={nspCodon} onChange={e => { if (e.target.value !== "") setNspCodon(parseInt(e.target.value)); setNsp(nsp); setCombinedCodon(null); setORF1aorBCodon(null)}}></input>
+        Codon: <input type="number" value={nspCodon} onChange={e => { setNspCodon(parseInt(e.target.value)); setNsp(nsp); setCombinedCodon(null); setORF1aorBCodon(null)}}></input>
 
       </div>
 
