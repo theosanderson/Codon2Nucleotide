@@ -85,7 +85,6 @@ h1 {
 
 button {
   font-size: 40%;
-  margin-top: 50px;
   /* remove all style and format as link*/
   border: none;
   background: none;
@@ -94,4 +93,8 @@ button {
   font-size: inherit;
   color: rgb(167, 167, 167);
   text-decoration: underline;
+}
+
+.margined{
+  margin-top:50px;
 }
