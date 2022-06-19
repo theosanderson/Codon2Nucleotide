@@ -250,7 +250,7 @@ function App() {
 }
 
 
-<p class="margined"><a href="https://github.com/theosanderson/codon2nucleotide">GitHub</a></p>
+<p class="margined"><a style={{color: "rgb(167, 167, 167)"}} href="https://github.com/theosanderson/codon2nucleotide">GitHub</a></p>
 
     </div >
   );
