@@ -13,7 +13,7 @@ const genes = {
   'ORF7a': [27394, 27760],
   'ORF7b': [27756, 27888],
   'ORF8': [27894, 28260],
-  'N': [28274, 29534],
+  'N': [28274, 29534],lor
   'ORF10': [29558, 29675]
 }
 
@@ -250,7 +250,7 @@ function App() {
 }
 
 
-<p class="margined"><a style={color: "rgb(167, 167, 167)"}>href="https://github.com/theosanderson/codon2nucleotide">GitHub</a></p>
+<p class="margined"><a style={{color: "rgb(167, 167, 167)"}} href="https://github.com/theosanderson/codon2nucleotide">GitHub</a></p>
 
     </div >
   );
