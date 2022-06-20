@@ -92,7 +92,7 @@ function App() {
 
       combinedCodon = nsps[nsp] + nspCodon - 1;
       
-      if(combinedCodon >= 4401) {
+      if(combinedCodon > 4401) {
         orf1aorbcodon = nsps[nsp]+nspCodon-1-4401;
         orf1aorb = "ORF1b";
       }
