@@ -203,6 +203,7 @@ function App() {
           <h3>Nucleotide </h3>
           Nucleotide: <input type="number" value={nucleotide} onChange={e => { setNucleotide(parseInt(e.target.value)); setCodon(null); }}></input>
           <div className="to_sec">{end_nucleotide && " to " + end_nucleotide}</div>
+          <div><a target="_blank" style={{color: "rgb(167, 167, 167)", marginTop:"10px", display:"block"}} href={"https://gensplore.theo.io/?gb=%2Fsequence.gb&search="+nucleotide}>View in Gensplore</a></div>
         </div>
 
       </div>
