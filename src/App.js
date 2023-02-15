@@ -203,7 +203,7 @@ function App() {
           <h3>Nucleotide </h3>
           Nucleotide: <input type="number" value={nucleotide} onChange={e => { setNucleotide(parseInt(e.target.value)); setCodon(null); }}></input>
           <div className="to_sec">{end_nucleotide && " to " + end_nucleotide}</div>
-          <div><a style={{color: "rgb(167, 167, 167)", marginTop:"5px"}} href={"https://gensplore.theo.io/?gb=%2Fsequence.gb&search="+nucleotide}>View in Gensplore</a></div>
+          <div><a style={{color: "rgb(167, 167, 167)", marginTop:"5px", display:"block"}} href={"https://gensplore.theo.io/?gb=%2Fsequence.gb&search="+nucleotide}>View in Gensplore</a></div>
         </div>
 
       </div>
